@@ -1,14 +1,14 @@
-import mongoose from 'mongoose'
+import mongoose from 'mongoose';
 
-mongoose.set('strictQuery', true)
+const mongoUri = "mongodb://mongo:YvjDmHBINTcvxYWvLCzHaNJGmeBTjZWc@mongodb.railway.internal:27017";
 
-const connection = async()=>{
-    try {
-        const {connection} = await mongoose.connect(process.env.MONGODB_URI_LOCAL)
-        console.log(`Database is connected on ${connection.host} - ${connection.port}`)
-    } catch (error) {
-        console.log(error);
-    }
-}
-
-export default  connection
+export const connectDB = async () => {
+  try {
+    console.log('Conectando a MongoDB con URI:', mongoUri);
+    await mongoose.connect(mongoUri);
+    console.log('✅ Conectado a MongoDB');
+  } catch (error) {
+    console.error('❌ Error al conectar a MongoDB:', error.message);
+    process.exit(1);
+  }
+};
