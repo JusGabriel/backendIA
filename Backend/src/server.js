@@ -7,7 +7,7 @@ import morgan from 'morgan';
 import estudiantesRoutes from './routes/estudiantes_routes.js';
 import chatRoutes from './routes/respuestas_routes.js';
 import conversacionRoutes from './routes/conversaciones_routes.js';
-
+import adminRoutes from './routes/administradores_routes.js'
 const app = express();
 
 // Middlewares
@@ -24,7 +24,7 @@ app.get('/', (req, res) => {
 app.use('/api/estudiante', estudiantesRoutes);
 app.use('/api', chatRoutes);
 app.use('/api/conversaciones', conversacionRoutes);
-
+app.use('/api/admin', adminRoutes)
 // Ruta para endpoints no encontrados
 app.use((req, res) => {
   res.status(404).send('Endpoint no encontrado');
