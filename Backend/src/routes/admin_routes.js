@@ -1,15 +1,10 @@
-import express from 'express'
-const router = express.Router()
+// routes/admin_routes.js
+import express from 'express';
+import { registrarAdministrador } from '../controllers/administradorController.js';
 
-// Ruta GET para listar administradores
-router.get('/', (req, res) => {
-    res.json({ message: 'Lista de administradores' })
-})
+const router = express.Router();
 
-// Ruta POST para crear un administrador
-router.post('/', (req, res) => {
-    const nuevoAdmin = req.body
-    res.json({ message: 'Administrador creado', admin: nuevoAdmin })
-})
+// POST /api/admin/registro
+router.post('/registro', registrarAdministrador);
 
-export default router
+export default router;
